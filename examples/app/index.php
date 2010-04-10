@@ -1,12 +1,10 @@
 <?php
 set_include_path(get_include_path() . PATH_SEPARATOR . '../../src/');
 
-define('APPLICATION_ID', '424183');
-define('APPLICATION_SECRET', '4a8ef33edfa18a0de22bf9d917ddbcb5');
-
+require_once 'config.php';
 require_once 'MailRu.php';
 
-$mr = new MailRu(APPLICATION_ID, APPLICATION_SECRET, $_REQUEST, new MailRu_Transport_Curl('http://my.alei29.netbridge.ru/cgi-bin/app/newapi'));
+$mr = new MailRu(APPLICATION_ID, APPLICATION_SECRET, $_REQUEST);
 
 echo <<<EOF
 <html>
