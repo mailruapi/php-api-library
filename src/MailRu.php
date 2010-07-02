@@ -114,6 +114,10 @@ class MailRu {
      */
     public function getSession() { return $this->session; }
 
+    public function getMobileCanvas() {
+        return $this->call('mobile.getCanvas');
+    }
+
     /**
      * @return MailRu_IUser
      */

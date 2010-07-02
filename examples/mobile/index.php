@@ -6,8 +6,6 @@ require_once 'MailRu.php';
 
 $mr = new MailRu(APPLICATION_ID, APPLICATION_SECRET, $_REQUEST);
 
-$canvas = $mr->getMobileCanvas();
-
 echo <<<EOF
 <html>
     <head>
@@ -15,9 +13,6 @@ echo <<<EOF
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     </head>
     <body>
-EOF;
-echo $canvas['header'];
-echo <<<EOF
     <h1>current user info</h1>
     <ul>
 EOF;
@@ -34,9 +29,9 @@ echo "<li>photo big: <a href='{$mr->getSession()->getViewer()->getPhotoBig()}'>{
 echo "<li>photo small: <a href='{$mr->getSession()->getViewer()->getPhotoSmall()}'>{$mr->getSession()->getViewer()->getPhotoSmall()}</a></li>";
 echo "<li>birthday: {$mr->getSession()->getViewer()->getBirthday()}</li>";
 echo "<li>referer: " . print_r($mr->getSession()->getViewer()->getReferer(), true) . "</li>";
-echo '</ul>';
-echo $canvas['footer'];
+
 echo <<<EOF
+    </ul>
     </body>
 </html>
 EOF;
