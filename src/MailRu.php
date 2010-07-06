@@ -34,7 +34,7 @@ class MailRu {
     private $transport;
 
     public static function getRequiredRequestParams() {
-        return array('app_id', 'session_key', 'authentication_key', 'oid', 'vid', 'ext_perm', 'window_id');
+        return array('app_id', 'session_key', 'authentication_key', 'oid', 'vid', 'ext_perm');
     }
 
     public function __construct($appId, $secretKey, array $requestParams, MailRu_ITransport $transport = null) {
@@ -59,7 +59,7 @@ class MailRu {
             'is_app_user' => !empty($requestParams['is_app_user']) ? $requestParams['is_app_user'] : false,
         ));
         $ownerUser = new MailRu_User_IncompleteData(array($this, 'getUser'), $requestParams['oid'], array('is_app_user' => true));
-        $this->session = new MailRu_Session_LoggedIn($viewerUser, $ownerUser, $requestParams['session_key'], $requestParams['window_id']);
+        $this->session = new MailRu_Session_LoggedIn($viewerUser, $ownerUser, $requestParams['session_key'], !empty($requestParams['window_id']) ? $requestParams['window_id'] : null);
         $this->transport = $transport ? $transport : new MailRu_Transport_Curl();
     }
 
