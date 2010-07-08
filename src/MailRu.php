@@ -114,8 +114,8 @@ class MailRu {
      */
     public function getSession() { return $this->session; }
 
-    public function getMobileCanvas() {
-        return $this->call('mobile.getCanvas');
+    public function getMobileCanvas($mobileSpec) {
+        return $this->call('mobile.getCanvas', array('mobile_spec' => $mobileSpec));
     }
 
     /**

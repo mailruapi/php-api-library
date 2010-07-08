@@ -6,7 +6,7 @@ require_once 'MailRu.php';
 
 $mr = new MailRu(APPLICATION_ID, APPLICATION_SECRET, $_REQUEST);
 
-$canvas = $mr->getMobileCanvas();
+$canvas = $mr->getMobileCanvas($_GET['mobile_spec']);
 
 echo <<<EOF
 <html>
